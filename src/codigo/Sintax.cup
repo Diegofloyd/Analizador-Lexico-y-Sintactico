@@ -21,7 +21,7 @@ terminal Linea, Comillas, T_dato, Int, Cadena, If, Else, Do, While, For,
     Llave_a, Llave_c, Corchete_a, Corchete_c, Main, P_coma, Identificador,
     Numero, ERROR;
 non terminal INICIO, SENTENCIA, DECLARACION, DECLARACION_FOR, IF, IF_ELSE,
-    WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR;
+    WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR, ASIGNACION;
 
 start with INICIO;
 
@@ -29,10 +29,24 @@ INICIO ::=
     SENTENCIA
 ;
 SENTENCIA ::= 
-    Parentesis_a DECLARACION Suma DECLARACION Parentesis_c Multiplicacion DECLARACION Suma DECLARACION
+    DECLARACION Suma DECLARACION |
+    DECLARACION Multiplicacion DECLARACION |
+    Parentesis_a ASIGNACION Parentesis_c |
+    Parentesis_a ASIGNACION Parentesis_c Multiplicacion ASIGNACION |
     
 ;
 
 DECLARACION ::=
-    Identificador
+    Identificador |
+    Numero |
+    
+;
+
+ASIGNACION ::=
+    Identificador |
+    Numero |
+    Identificador Suma Identificador |
+    Identificador Multiplicacion Identificador |
+    Numero Suma Numero |
+    Numero Multiplicacion Numero |
 ;
