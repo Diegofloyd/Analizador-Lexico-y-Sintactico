@@ -29,24 +29,30 @@ INICIO ::=
     SENTENCIA
 ;
 SENTENCIA ::= 
+    DECLARACION |
     DECLARACION Suma DECLARACION |
     DECLARACION Multiplicacion DECLARACION |
     Parentesis_a ASIGNACION Parentesis_c |
-    Parentesis_a ASIGNACION Parentesis_c Multiplicacion ASIGNACION |
-    
+    Parentesis_a ASIGNACION Parentesis_c Multiplicacion ASIGNACION 
 ;
 
 DECLARACION ::=
     Identificador |
-    Numero |
-    
+    Numero 
 ;
 
 ASIGNACION ::=
     Identificador |
     Numero |
+
     Identificador Suma Identificador |
-    Identificador Multiplicacion Identificador |
     Numero Suma Numero |
+    Numero Suma Identificador |
+    Identificador Suma Numero |
+
+    Identificador Multiplicacion Identificador |
     Numero Multiplicacion Numero |
+    Numero Multiplicacion Identificador |
+    Identificador Multiplicacion Numero |
+    
 ;
